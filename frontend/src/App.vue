@@ -2,54 +2,96 @@
   <v-app>
     <v-app-bar
       app
-      color="primary"
-      dark
+      color="#a90a56"
+      elevate-on-scroll
     >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
+      <v-app-bar-nav-icon
+        @click="drawer = true"
+      />
+      <v-tabs
+        right
+        color="#fff"
       >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
+        <v-tab
+          v-for="item in items"
+          :key="item.name"
+          :to="item.url"
+          color="#fff"
+        >
+        {{ item.name }}
+        </v-tab>
+      </v-tabs>
     </v-app-bar>
 
+    <v-navigation-drawer
+      v-model="drawer"
+      fixed
+      temporary
+    >
+      <v-list
+        nav
+        dense
+      >
+        <v-list-item
+          v-for="item in items"
+          :key="item.name"
+          :to="item.url"
+        >
+          <v-list-item-title>
+            {{ item.name }}
+          </v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+
     <v-main>
-      <router-view/>
+      <router-view></router-view>
     </v-main>
   </v-app>
 </template>
 
 <script>
-
 export default {
-  name: 'App',
+  data() {
+    return {
+      items: [
+        {
+          name: 'ログイン',
+          url: '/'
+        },
+        {
+          name: '概要',
+          url: '/#'
+        },
+        {
+          name: 'お問い合わせ',
+          url: '/contact'
+        },
+      ],
+      drawer: false,
+    }
+  }
+}
 
-  data: () => ({
-    //
-  }),
-};
 </script>
+
+<style>
+.v-tab {
+  display: none !important;
+}
+
+@media screen and (min-width: 600px) {
+  .v-app-bar__nav-icon {
+    display: none !important;
+  }
+
+  .v-tab {
+    display: flex !important;
+  }
+
+  .v-tabs {
+    margin-right: 3% !important;
+  }
+}
+
+</style>

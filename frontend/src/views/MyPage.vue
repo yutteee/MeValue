@@ -1,24 +1,43 @@
 <template>
-  <div class="about">
-    <Chart :chartData="chartItems" :options="chartOptions"/>
-    <v-card elevation="0">
-        <v-card-text
-            position: relative
-        >
-            <v-btn
-                class="mx-2"
-                fab
-                dark
-                absolute
-                right
-                color="#a90a56"
-            >
-            <v-icon dark>
-                mdi-plus
-            </v-icon>
-            </v-btn>
-        </v-card-text>
-    </v-card>
+  <div>
+    <v-container>
+      <h2>過去の投稿</h2>
+      <v-row class="posts">
+        <v-col cols="6" sm="4">
+          <v-img
+            src="../assets/sample.jpeg"
+            height="400"
+            contain
+          />
+        </v-col>
+        <v-col cols="6" sm="8">
+          <Chart
+            :chartData="chartItems"
+            :options="chartOptions"
+          />
+        </v-col>
+      </v-row>
+      <v-divider/>
+
+      <v-card elevation="0">
+          <v-card-text
+              position: relative
+          >
+              <v-btn
+                  class="mx-2"
+                  fab
+                  dark
+                  absolute
+                  right
+                  color="#a90a56"
+              >
+              <v-icon dark>
+                  mdi-plus
+              </v-icon>
+              </v-btn>
+          </v-card-text>
+      </v-card>
+    </v-container>
   </div>
 </template>
 
@@ -80,3 +99,10 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.posts {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+</style>

@@ -4,6 +4,8 @@ import LoginPage from '../views/LoginPage.vue'
 import AboutMePage from '../views/AboutMePage.vue'
 import ContactPage from '../views/ContactPage.vue'
 import MyPage from '../views/MyPage.vue'
+import ValuePage from '../views/EvaluationPage.vue'
+import PostPage from '../views/PostPage.vue'
 
 Vue.use(VueRouter)
 
@@ -27,6 +29,16 @@ const routes = [
     path: '/mypage',
     name: 'mypage',
     component: MyPage
+  },
+  {
+    path: '/value',
+    name: 'value',
+    component: ValuePage
+  },
+  {
+    path: '/post',
+    name: 'post',
+    component: PostPage
   }
 ]
 

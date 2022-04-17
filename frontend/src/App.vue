@@ -56,8 +56,8 @@ export default {
     return {
       items: [
         {
-          name: 'ログイン',
-          url: '/'
+          name: 'ホーム',
+          url: '/mypage'
         },
         {
           name: '概要',
